@@ -2,14 +2,28 @@
 import sys
 from os import walk
 import pathlib
-import temp
+
+sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\meta\\tunits\\')
+import tunits
+sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\input\\')
+import args
+sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\settings\\version\\')
+import version
+sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\output\\')
+import output
+sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\translation\\meta\\using\\')
+import musing_dll
+sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\translation\\structure\\')
+import smain
+sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\translation\\structure\\')
+import snamespace
 
 ##################### Translate #####################
 
 #temp func
-def get_file_path() -> str:
-    filenames = next(walk(temp.get_folder_path_input()), (None, None, []))[2]
-    return str(temp.get_folder_path_input() + str(filenames[0]))
+#def get_file_path() -> str:
+#    filenames = next(walk(temp.get_folder_path_input()), (None, None, []))[2]
+#    return str(temp.get_folder_path_input() + str(filenames[0]))
 
 def get_file_content(filename : str) -> list:
     content = list()
@@ -22,28 +36,6 @@ def get_file_content(filename : str) -> list:
 #def lexicalAnalysis(words :list): # words in line
 #    for(word : words):
 #        if(
-
-def call_using(libName):
-    return ("#include <" + libName[5:len(libName)-1] + ">")
-
-def call_namespace(words):
-    result = "namespace"
-    for index in range(1, len(words)):
-        result += ' ' + words[index] 
-    return result
-
-def call_main(words):
-    if words[1] == "auto":
-       words[1] = "void"
-    #umain
-    arguments = "(int argc, char *argv[])"
-    return str('\t' + words[1] + ' u' + words[0] + arguments)
-
-def get_new_filepath(filepath :str) -> str:
-    return str(temp.get_folder_path_output() + "\\new_" + filepath.rsplit('\\', 1)[1])
-
-def add_comment(new_content :list, message :str):
-    new_content.append("/*{0:s}*/".format(message))
 
 def remove_endl(content :list):
     for index in range(0, len(content)):
@@ -65,13 +57,13 @@ def translate_file(content :list, new_content :list, new_file):
         word = words[0];
         
         if word == "using":
-            message = call_using(words[1]) + "\n"
+            message = musing_dll.call_using(words[1]) + "\n"
             #new_file.write(str(message))
         elif word == "namespace":
-            message = call_namespace(words) + "\n"
+            message = snamespace.call_namespace(words) + "\n"
             #new_file.write(str(message))
         elif word == "main":
-            message = call_main(words) + "\n"
+            message = smain.call_main(words) + "\n"
             #new_file.write(str(message))
             main_path = "Programm"
         elif word == "\n":
@@ -98,17 +90,17 @@ def translate(filepath :str):
 
     content      = list(get_file_content(filepath)) # input  file content
     
-    new_filepath = get_new_filepath(filepath) # output file name
+    new_filepath = output.get_new_filepath(filepath) # output file name
     new_file     = open(new_filepath, 'w')    # output file object
     new_content  = list()                     # output file content
 
     #Console message
     print("Start translation()")
-    translation_message = "Translate to {0:s} from {1:s}".format(temp.tr_to_lang, temp.tr_from_lang)
-    print("Version :: {0:s}".format(temp.version));
+    translation_message = "Translate to {0:s} from {1:s}".format(version.tr_to_lang, version.tr_from_lang)
+    print("Version :: {0:s}".format(version.version));
     print(translation_message + '\n')
     #Translation file message
-    add_comment(new_content, translation_message)
+    output.add_comment(new_content, translation_message)
     new_content.append("\n")
 
     remove_endl(content)
@@ -124,8 +116,14 @@ def translate(filepath :str):
 def main():
     print("Start main()!\n")    
 
+    #single
+    filepath = args.check()
+    if filepath == "":
+        print("invalid args")
+        return
+    
     # lexical analysis ???
-    translate(str(get_file_path()))
+    translate(str(filepath))
 
     print("Close main()!")
 
