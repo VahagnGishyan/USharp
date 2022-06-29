@@ -1,0 +1,10 @@
+
+using std::string;
+
+namespace Programm
+{
+	main auto
+	{
+		
+	} 
+}
