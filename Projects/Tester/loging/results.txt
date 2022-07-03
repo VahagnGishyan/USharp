@@ -1,0 +1,39 @@
+[DEBUG]
+Test Settings
+Cases                 :: { excaption, state }
+Case count            :: 10
+Iteration count       :: 100
+Overhead[std::chrono] :: 271ns
+
+Test Case [excaption]
+Itr[0] :: 4984045
+Itr[1] :: 3085297
+Itr[2] :: 2393520
+Itr[3] :: 2252632
+Itr[4] :: 6578213
+Itr[5] :: 2009797
+Itr[6] :: 1909302
+Itr[7] :: 1943013
+Itr[8] :: 2142275
+Itr[9] :: 2068096
+
+Test Case [state]
+Itr[0] :: 417
+Itr[1] :: 236
+Itr[2] :: 236
+Itr[3] :: 234
+Itr[4] :: 258
+Itr[5] :: 234
+Itr[6] :: 247
+Itr[7] :: 290
+Itr[8] :: 234
+Itr[9] :: 242
+
+More details
+AWG of Test Case [excaption] :: 2936619
+MAX of Test Case [excaption] :: 6578213
+MIN of Test Case [excaption] :: 1909302
+
+AWG of Test Case [state] :: 262
+MAX of Test Case [state] :: 417
+MIN of Test Case [state] :: 234

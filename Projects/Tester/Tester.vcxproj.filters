@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{a348a1a6-1c8e-4571-8c72-12d3f3924367}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="loging">
+      <UniqueIdentifier>{d271665b-0a15-43b6-ab0c-6982445c0909}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\Core.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="loging\messages.txt">
+      <Filter>loging</Filter>
+    </Text>
+    <Text Include="loging\results.txt">
+      <Filter>loging</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
