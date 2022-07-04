@@ -1,0 +1,17 @@
+
+using std::string;
+
+namespace Programm
+{
+	enum
+
+	fooState() { state {} }
+	{
+		state
+	}
+
+	main auto
+	{
+		
+	} 
+}

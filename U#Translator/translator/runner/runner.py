@@ -3,20 +3,14 @@ import sys
 from os import walk
 import pathlib
 
-sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\meta\\tunits\\')
-import tunits
-sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\input\\')
-import args
-sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\settings\\version\\')
-import version
-sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\output\\')
-import output
-sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\translation\\meta\\using\\')
-import musing_dll
-sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\translation\\structure\\')
-import smain
-sys.path.insert(0, 'D:\\Projects\\U#Leng\\U#Translator\\translator\\translation\\structure\\')
-import snamespace
+sys.path.insert(0, '..\..')
+from translator.meta.tunits            import tunits
+from translator.input                  import args
+from settings.version                  import version
+from translator.output                 import output
+from translator.translation.meta.using import using_dll
+from translator.translation.structure  import smain
+from translator.translation.structure  import snamespace
 
 ##################### Translate #####################
 
@@ -57,7 +51,7 @@ def translate_file(content :list, new_content :list, new_file):
         word = words[0];
         
         if word == "using":
-            message = musing_dll.call_using(words[1]) + "\n"
+            message = using_dll.call_using(words[1]) + "\n"
             #new_file.write(str(message))
         elif word == "namespace":
             message = snamespace.call_namespace(words) + "\n"
@@ -134,8 +128,10 @@ if __name__ == "__main__":
 
 
 # TODO
-# modules-namespaces
-# input,  file, files, states
+# modules-namespaces ????
+# input.main(argv)
+# input.file-files
+# output.file-files
 # output, file, files, to cpp ?
 # modul::metadata for translation
 # modul::translation

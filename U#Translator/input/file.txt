@@ -3,8 +3,30 @@ using std::string;
 
 namespace Programm
 {
+	enum state StateEnum
+	{
+		SomeError
+	}
+
+	foo() { const, state { StateEnum } } const int
+	{
+		state State::SomeError;
+		return (0);
+	}
+
+	fooCaller() const int
+	{
+		int value = foo();
+		if(fooState::StateEnum::SomeError)
+		{
+			
+			/*Some handling*/
+		}
+		return (value);
+	}
+
 	main auto
 	{
-		
+		foo();
 	} 
 }

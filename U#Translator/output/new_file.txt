@@ -4,9 +4,31 @@
 
 namespace Programm
 {
+	enum state StateEnum/*no_translate*/
+	{
+		SomeError/*no_translate*/
+	}
+
+	foo() { const, state { StateEnum } } const int/*no_translate*/
+	{
+		state State::SomeError;/*no_translate*/
+		return (0);/*no_translate*/
+	}
+
+	fooCaller() const int/*no_translate*/
+	{
+		int value = foo();/*no_translate*/
+		if(fooState::StateEnum::SomeError)/*no_translate*/
+		{
+
+			/*Some handling*//*no_translate*/
+		}
+		return (value);/*no_translate*/
+	}
+
 	void umain(int argc, char *argv[])
 	{
-
+		foo();/*no_translate*/
 	} 
 }
 
